@@ -1,4 +1,3 @@
-# project1  
 ## Minimalistic rEFInd theme
 
 [rEFInd](http://www.rodsbooks.com/refind/) is an easy to use boot manager for UEFI
