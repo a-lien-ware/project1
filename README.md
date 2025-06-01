@@ -1,66 +1,21 @@
-## Minimalistic rEFInd theme
+#rEFind-minimal主题
 
-[rEFInd](http://www.rodsbooks.com/refind/) is an easy to use boot manager for UEFI
-based systems. This is a clean and minimal theme for it.
-
-![rEFInd Minimalistic](http://i.imgur.com/3bMG6U7.png)
-
-### Usage
-
- 1. Locate your refind EFI directory. This is commonly `/boot/EFI/refind`
-    though it will depend on where you mount your ESP and where rEFInd is
-    installed. `fdisk -l` and `mount` may help.
-
- 2. Create a folder called `themes` inside it, if it doesn't already exist
-
- 3. Clone this repository into the `themes` directory.
-
- 4. To enable the theme add `include themes/rEFInd-minimal/theme.conf` at the end of
-    `refind.conf`.
-
-Here's an example menuentry configuration (from the screenshot)
-
-```nginx
-menuentry "Arch Linux" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_arch.png
-	loader vmlinuz-linux
-	initrd initramfs-linux.img
-	options "rw root=UUID=dfb2919d-ff78-48db-a8a7-23f7542c343a loglevel=3"
-}
-
-menuentry "Windows" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_win.png
-	loader /EFI/Microsoft/Boot/bootmgfw.efi
-}
-
-menuentry "OSX" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_mac.png
-	loader /EFI/Apple/Boot/bootmgfw.efi
-}
+[rEFInd](https://sourceforge.net/projects/refind/) 是一个非常好用的UEFI多系统引导器，支持图形界面，相当美观，但是rEFind的默认界面，相当难看，所以要进行主题美化，minimal是一个简介好看的主题  
+##用法  
+###Windows  
+首先安装[rEFind](http://www.rodsbooks.com/refind/)，下载下来之后解压，安装软件[Diskgenuis](https://www.diskgenius.cn/download.php)，打开，选择自己的硬盘，右侧双击EFI_ESP分区，将解压后的文件中有一个refind目录，将refind目录拖到EFI_ESP分区中的EFI目录下，在refind目录下创建themes目录，将本文件放到themes目录下，确保文件名为```rEFind-minimal```，然后在refind目录下将refind.conf复制到桌面，在最后一行添加
 ```
-
-Entries that are autodetected should also show the proper icons.
-
-### Background sizes
-
-If you find the background looks blurry it may be due to the included wallpaper
-being an incorrect resolution for your monitor. You can download the [original
-high quality wallpaper][wallpaper], resize it as appropriate, and replace the
-`background.png`.
-
-You can of course also choose your own background!
-
-### Attribution
-
-The OS icons are from [Lightness for burg][icons] by [SWOriginal][icon-author].
-
-The background is [Minimalist Wallpaper][wallpaper] by
-[LeonardoAIanB][wallpaper-author]. Thank you to [Padster][padster] for locating
-it!
-
-[icons]: http://sworiginal.deviantart.com/art/Lightness-for-burg-181461810
-[icon-author]: http://sworiginal.deviantart.com/
-
-[padster]: https://github.com/theRealPadster
-[wallpaper]: http://leonardoalanb.deviantart.com/art/Minimalist-wallpaper-295519786
-[wallpaper-author]: http://leonardoalanb.deviantart.com/
+include themes/rEFInd-minimal/theme.conf
+```
+在放到refind目录下，覆盖原来的文件，然后重启就行了  
+###linux(ubuntu)  
+与windows一样，但是下载的时候在终端运行  
+```
+sudo apt install refind
+```
+然后在```/boot/efi/EFI```中，找到refind目录，然后和上面一样的操作，如果改文件没有权限可以使用终端修改，运行  
+```
+sudo echo "include themes/rEFInd-minimal/theme.conf" >> refind.conf
+sudo refind-install
+```
+然后重启就行了
